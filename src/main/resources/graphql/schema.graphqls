@@ -1,0 +1,31 @@
+type Blog {
+  id: ID!
+  title: String
+  content: String
+  author: User
+  likes: [User]
+  comments:[Comment]
+}
+
+type User {
+  username: String
+  userid: ID!
+  followers: [User]
+}
+
+type Comment {
+  comment: String
+  id: ID!
+  user: User
+  reply:[Comment]
+}
+
+type Query {
+  allBlogs: [Blog]
+  blogById(id: ID!): Blog
+  blogByAuthor(id: ID!): [Blog]
+}
+
+type Mutation{
+  updateBlog(id: ID!, title: String): Blog
+}
